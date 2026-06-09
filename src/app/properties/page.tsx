@@ -26,14 +26,14 @@ export default async function PropertiesPage() {
 
       {/* Categories */}
       <section className="border-b border-line">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-20 sm:py-28">
           <PortfolioCategories />
         </Container>
       </section>
 
       {/* Available residences */}
       <section className="border-b border-line bg-surface">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-20 sm:py-28">
           <SectionHeading
             eyebrow="Available now"
             title="Current residences"

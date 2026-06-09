@@ -18,7 +18,7 @@ export function PageHero({
 }) {
   return (
     <section className="border-b border-line">
-      <Container className="pb-16 pt-36 sm:pb-20 sm:pt-44">
+      <Container className="pb-14 pt-32 sm:pb-16 sm:pt-40">
         <div
           className={cn(
             "flex flex-col gap-6",

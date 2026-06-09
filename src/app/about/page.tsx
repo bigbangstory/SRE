@@ -22,7 +22,7 @@ export default function AboutPage() {
 
       {/* The practice */}
       <section className="border-b border-line">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-20 sm:py-28">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal>
               <div className="relative aspect-[4/3] overflow-hidden rounded-[3px]">
@@ -73,7 +73,7 @@ export default function AboutPage() {
 
       {/* Core values */}
       <section className="border-b border-line bg-surface">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-20 sm:py-28">
           <SectionHeading
             eyebrow="Core values"
             title="What we stand on"
@@ -85,7 +85,7 @@ export default function AboutPage() {
 
       {/* Mission */}
       <section className="border-b border-line">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-20 sm:py-28">
           <SectionHeading
             eyebrow="Our mission"
             title="How we work"
@@ -97,7 +97,7 @@ export default function AboutPage() {
 
       {/* People */}
       <section className="border-b border-line bg-surface">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-20 sm:py-28">
           <SectionHeading
             eyebrow="The people"
             title="Speak with us directly"
