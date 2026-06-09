@@ -5,18 +5,13 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
-import { PropertyGrid } from "@/components/property/PropertyGrid";
 import { PortfolioCategories } from "@/components/sections/PortfolioCategories";
-import { CoreValues } from "@/components/sections/CoreValues";
 import { Mission } from "@/components/sections/Mission";
 import { StatementBand } from "@/components/sections/StatementBand";
 import { PartnerCTA } from "@/components/sections/PartnerCTA";
-import { getFeaturedProperties } from "@/data/properties";
-import { about, expertise, clientele } from "@/content/content";
+import { about, clientele } from "@/content/content";
 
-export default async function HomePage() {
-  const featured = await getFeaturedProperties(3);
-
+export default function HomePage() {
   return (
     <>
       <Hero />
@@ -36,7 +31,7 @@ export default async function HomePage() {
               {clientele.map((c) => (
                 <li
                   key={c}
-                  className="rounded-full border border-line bg-canvas/70 px-4 py-1.5 text-xs uppercase tracking-caps text-muted"
+                  className="glass rounded-full px-4 py-1.5 text-xs uppercase tracking-caps text-muted"
                 >
                   {c}
                 </li>
@@ -57,53 +52,8 @@ export default async function HomePage() {
         </Reveal>
       </section>
 
-      {/* Expertise */}
+      {/* Portfolio preview (full grid lives on /properties) */}
       <section className="border-b border-line">
-        <Container className="py-20 sm:py-28">
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            <Reveal>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[3px]">
-                <Image
-                  src="/brand/tower.jpg"
-                  alt="A commercial development represented by Suri Real Estate"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
-            </Reveal>
-            <div>
-              <SectionHeading
-                eyebrow="Expertise"
-                title="Strategic Property Advisory"
-                intro={expertise.intro}
-              />
-              <div className="mt-8 flex flex-col divide-y divide-line border-t border-line">
-                {expertise.areas.map((a, i) => (
-                  <Reveal
-                    key={a.title}
-                    delay={i * 0.08}
-                    className="flex flex-col gap-1.5 py-5"
-                  >
-                    <h3 className="font-serif text-xl italic text-ink">
-                      {a.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-muted">{a.body}</p>
-                  </Reveal>
-                ))}
-              </div>
-              <Reveal className="mt-8">
-                <Button href="/services" variant="link" arrow>
-                  Explore our services
-                </Button>
-              </Reveal>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* Portfolio */}
-      <section className="border-b border-line bg-surface">
         <Container className="py-20 sm:py-28">
           <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
@@ -128,19 +78,7 @@ export default async function HomePage() {
         statement="We move quietly and think strategically, representing the rare and the remarkable."
       />
 
-      {/* Core values */}
-      <section className="border-b border-line">
-        <Container className="py-20 sm:py-28">
-          <SectionHeading
-            eyebrow="Core values"
-            title="What we stand on"
-            className="mb-14 max-w-2xl"
-          />
-          <CoreValues />
-        </Container>
-      </section>
-
-      {/* Mission */}
+      {/* How we work */}
       <section className="relative overflow-hidden border-b border-line bg-surface">
         <div
           aria-hidden
@@ -153,19 +91,6 @@ export default async function HomePage() {
             className="mb-14 max-w-2xl"
           />
           <Mission />
-        </Container>
-      </section>
-
-      {/* Selected homes (empty state until listings are added) */}
-      <section className="border-b border-line">
-        <Container className="py-20 sm:py-28">
-          <SectionHeading
-            eyebrow="Residences"
-            title="Selected homes"
-            align="center"
-            className="mb-12"
-          />
-          <PropertyGrid properties={featured} />
         </Container>
       </section>
 

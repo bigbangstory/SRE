@@ -98,7 +98,7 @@ export default function Hero() {
             <Button href="/properties" onDark arrow>
               View portfolio
             </Button>
-            <Button href="/contact" variant="outline" onDark>
+            <Button href="/contact" variant="glass" onDark>
               Partner with us
             </Button>
           </motion.div>

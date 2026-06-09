@@ -104,7 +104,7 @@ export default async function PropertyDetailPage({ params }: Params) {
             ) : null}
           </Reveal>
 
-          <Reveal className="order-1 h-fit rounded-[3px] border border-line p-8 lg:order-2">
+          <Reveal className="glass order-1 h-fit rounded-[6px] p-8 lg:order-2">
             <h2 className="font-display text-sm uppercase tracking-caps text-ink">
               Overview
             </h2>

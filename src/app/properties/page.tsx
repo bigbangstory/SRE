@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/motion/Reveal";
 import { PortfolioCategories } from "@/components/sections/PortfolioCategories";
 import { PropertyGrid } from "@/components/property/PropertyGrid";
 import { PartnerCTA } from "@/components/sections/PartnerCTA";
 import { getProperties } from "@/data/properties";
+import { areas } from "@/content/content";
 
 export const metadata: Metadata = {
   title: "Properties",
@@ -31,8 +33,38 @@ export default async function PropertiesPage() {
         </Container>
       </section>
 
+      {/* Areas we cover */}
+      <section className="relative overflow-hidden border-b border-line bg-surface">
+        <div
+          aria-hidden
+          className="dot-grid pointer-events-none absolute inset-0 text-accent/15"
+        />
+        <Container className="relative py-20 sm:py-28">
+          <SectionHeading
+            eyebrow="Where we operate"
+            title="Areas we cover"
+            intro="From the capital's most prestigious addresses to its commercial and land opportunities."
+            className="mb-12 max-w-2xl"
+          />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {areas.map((a, i) => (
+              <Reveal
+                key={a}
+                delay={i * 0.05}
+                className="glass flex items-center gap-4 rounded-[6px] px-6 py-5"
+              >
+                <span className="font-display text-sm text-accent">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="font-serif text-lg text-ink">{a}</span>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* Available residences */}
-      <section className="border-b border-line bg-surface">
+      <section className="border-b border-line">
         <Container className="py-20 sm:py-28">
           <SectionHeading
             eyebrow="Available now"

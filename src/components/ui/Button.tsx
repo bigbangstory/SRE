@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type Variant = "solid" | "outline" | "link";
+type Variant = "solid" | "outline" | "link" | "glass";
 
 const base =
   "group inline-flex items-center justify-center gap-2 text-[13px] tracking-wide transition-all duration-500 ease-luxe";
@@ -20,6 +20,10 @@ const variants: Record<Variant, { light: string; dark: string }> = {
   link: {
     light: "text-ink hover:text-accent",
     dark: "text-ink-text hover:text-accent-soft",
+  },
+  glass: {
+    light: "glass rounded-full px-7 py-3.5 text-ink hover:bg-white/70",
+    dark: "glass-dark rounded-full px-7 py-3.5 text-white hover:bg-white/20",
   },
 };
 

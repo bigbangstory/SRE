@@ -4,10 +4,8 @@ import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
-import { Mission } from "@/components/sections/Mission";
-import { PortfolioCategories } from "@/components/sections/PortfolioCategories";
 import { PartnerCTA } from "@/components/sections/PartnerCTA";
-import { expertise } from "@/content/content";
+import { expertise, support } from "@/content/content";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -49,41 +47,51 @@ export default function ServicesPage() {
               </div>
             </div>
             <Reveal className="order-1 lg:order-2">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[3px]">
-                <Image
-                  src="/brand/tower.jpg"
-                  alt="A commercial development represented by Suri Real Estate"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
+              <Image
+                src="/brand/tower.jpg"
+                alt="A commercial development represented by Suri Real Estate"
+                width={1383}
+                height={922}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="h-auto w-full mix-blend-multiply"
+              />
             </Reveal>
           </div>
         </Container>
       </section>
 
-      {/* What we handle */}
-      <section className="border-b border-line bg-surface">
-        <Container className="py-20 sm:py-28">
+      {/* Full-service support */}
+      <section className="relative overflow-hidden border-b border-line bg-surface">
+        <div
+          aria-hidden
+          className="dot-grid pointer-events-none absolute inset-0 text-accent/15"
+        />
+        <Container className="relative py-20 sm:py-28">
           <SectionHeading
-            eyebrow="What we handle"
-            title="A diverse portfolio"
+            eyebrow="Full-service"
+            title="Support at every stage"
+            intro="From first viewing to long after the signature, the relationship continues."
             className="mb-14 max-w-2xl"
           />
-          <PortfolioCategories />
-        </Container>
-      </section>
-
-      {/* How we work */}
-      <section className="border-b border-line">
-        <Container className="py-20 sm:py-28">
-          <SectionHeading
-            eyebrow="Our mission"
-            title="How we work"
-            className="mb-14 max-w-2xl"
-          />
-          <Mission />
+          <div className="grid gap-6 sm:grid-cols-2">
+            {support.map((s, i) => (
+              <Reveal
+                key={s.title}
+                delay={i * 0.08}
+                className="glass rounded-[6px] p-8 sm:p-10"
+              >
+                <span className="font-display text-2xl text-accent">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-3 font-serif text-2xl italic text-ink">
+                  {s.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">
+                  {s.body}
+                </p>
+              </Reveal>
+            ))}
+          </div>
         </Container>
       </section>
 
