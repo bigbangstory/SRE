@@ -78,7 +78,7 @@ export default function ContactPage() {
             </Reveal>
 
             {/* Form */}
-            <Reveal delay={0.1} className="glass rounded-[6px] p-8 sm:p-10">
+            <Reveal delay={0.1} className="glass rounded-[28px] p-8 sm:p-10">
               <h2 className="font-display text-lg uppercase tracking-caps text-ink">
                 Send an enquiry
               </h2>

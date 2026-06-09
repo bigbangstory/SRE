@@ -30,7 +30,7 @@ function EmptyState() {
             Our current residences are shared discreetly, on enquiry. Tell us
             what you are looking for and we will open the right doors.
           </p>
-          <Button href="/contact" onDark arrow className="mt-2">
+          <Button href="/contact" variant="glass" onDark arrow className="mt-2">
             Request access
           </Button>
         </div>
