@@ -100,7 +100,7 @@ export default function AboutPage() {
                 <Reveal
                   key={c.name}
                   delay={i * 0.1}
-                  className="glass flex flex-col items-center gap-4 rounded-[6px] p-10 text-center"
+                  className="glass flex flex-col items-center gap-4 rounded-[24px] p-10 text-center"
                 >
                   <span className="grid h-16 w-16 place-items-center rounded-full border border-line/80 font-display text-lg tracking-caps text-accent">
                     {initials}

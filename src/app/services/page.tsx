@@ -78,7 +78,7 @@ export default function ServicesPage() {
               <Reveal
                 key={s.title}
                 delay={i * 0.08}
-                className="glass rounded-[6px] p-8 sm:p-10"
+                className="glass rounded-[24px] p-8 sm:p-10"
               >
                 <span className="font-display text-2xl text-accent">
                   {String(i + 1).padStart(2, "0")}

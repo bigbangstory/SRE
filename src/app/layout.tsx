@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Inter, Cormorant_Garamond, Cinzel } from "next/font/google";
+import { Hanken_Grotesk, Cormorant_Garamond, Cinzel } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { site } from "@/lib/site";
 
-const inter = Inter({
+const hanken = Hanken_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-hanken",
   display: "swap",
 });
 
@@ -68,7 +68,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${cormorant.variable} ${cinzel.variable} antialiased`}
+      className={`${hanken.variable} ${cormorant.variable} ${cinzel.variable} antialiased`}
     >
       <body className="min-h-screen bg-canvas text-ink">
         <SmoothScroll>

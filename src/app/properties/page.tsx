@@ -51,7 +51,7 @@ export default async function PropertiesPage() {
               <Reveal
                 key={a}
                 delay={i * 0.05}
-                className="glass flex items-center gap-4 rounded-[6px] px-6 py-5"
+                className="glass flex items-center gap-4 rounded-2xl px-6 py-5"
               >
                 <span className="font-display text-sm text-accent">
                   {String(i + 1).padStart(2, "0")}
