@@ -8,10 +8,17 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { about } from "@/content/content";
+import { Container } from "@/components/ui/Container";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+
+const META = [
+  "Vasant Vihar, New Delhi",
+  "UHNIs · Corporates · Embassies",
+  "Available 24/7",
+];
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -20,7 +27,7 @@ export default function Hero() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "14%"]);
 
   const container = {
     hidden: {},
@@ -34,68 +41,96 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className="relative grid min-h-[100svh] grid-cols-1 lg:grid-cols-[1.05fr_1fr]"
+      className="relative h-[100svh] min-h-[620px] w-full overflow-hidden"
     >
-      {/* Text column */}
-      <div className="relative z-10 flex items-center px-6 pb-16 pt-32 sm:px-8 lg:px-12 lg:pt-24 xl:px-16">
+      {/* Full-bleed image with gentle parallax */}
+      <motion.div
+        style={reduce ? undefined : { y }}
+        className="absolute inset-0 scale-[1.1]"
+      >
+        <Image
+          src="/brand/hero-terrace.jpg"
+          alt="A premium rooftop terrace residence represented by Suri Real Estate"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </motion.div>
+
+      {/* Scrims: top for nav legibility, bottom-left for hero copy */}
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-ink-canvas/70 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-ink-canvas/90 via-ink-canvas/45 to-transparent" />
+
+      <Container className="relative z-10 flex h-full flex-col justify-end pb-14 sm:pb-16">
         <motion.div
           variants={container}
           initial={reduce ? false : "hidden"}
           animate="show"
-          className="max-w-xl"
+          className="max-w-3xl"
         >
           <motion.p
             variants={item}
-            className="flex items-center gap-3 text-[11px] uppercase tracking-luxe text-accent"
+            className="flex items-center gap-3 text-[11px] uppercase tracking-luxe text-white/80"
           >
-            <span className="h-px w-8 bg-accent/60" />
+            <span className="h-px w-8 bg-accent" />
             Private Real Estate · New Delhi
           </motion.p>
 
           <motion.h1
             variants={item}
-            className="mt-7 font-serif text-balance text-5xl leading-[1.04] text-ink sm:text-6xl lg:text-7xl"
+            className="mt-6 font-serif text-balance text-[2.85rem] leading-[1.02] text-white sm:text-6xl lg:text-7xl"
           >
             Where premium meets{" "}
-            <span className="italic text-accent">personal.</span>
+            <span className="italic text-accent-soft">personal.</span>
           </motion.h1>
 
           <motion.p
             variants={item}
-            className="mt-7 max-w-md text-pretty text-base leading-relaxed text-ink-soft sm:text-lg"
+            className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-white/80 sm:text-lg"
           >
-            {about.body}
+            From Lutyens&rsquo; timeless avenues to prime commercial and
+            farmhouse estates, we represent the rare and the remarkable across
+            the NCR.
           </motion.p>
 
-          <motion.div variants={item} className="mt-9 flex flex-wrap gap-4">
-            <Button href="/properties" arrow>
+          <motion.div variants={item} className="mt-8 flex flex-wrap gap-4">
+            <Button href="/properties" onDark arrow>
               View portfolio
             </Button>
-            <Button href="/contact" variant="outline">
+            <Button href="/contact" variant="outline" onDark>
               Partner with us
             </Button>
           </motion.div>
-        </motion.div>
-      </div>
 
-      {/* Image column */}
-      <div className="relative min-h-[58vh] overflow-hidden lg:min-h-full">
-        <motion.div
-          style={reduce ? undefined : { y }}
-          className="absolute inset-0 scale-[1.08]"
-        >
-          <Image
-            src="/brand/hero-terrace.jpg"
-            alt="A premium rooftop terrace residence represented by Suri Real Estate"
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover"
-          />
+          {/* Meta strip fills the lower band and adds substance */}
+          <motion.ul
+            variants={item}
+            className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-white/15 pt-7 text-[11px] uppercase tracking-luxe text-white/65"
+          >
+            {META.map((m) => (
+              <li key={m}>{m}</li>
+            ))}
+          </motion.ul>
         </motion.div>
-        {/* subtle edge blend into the text column on large screens */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-24 bg-gradient-to-r from-canvas to-transparent lg:block" />
-      </div>
+      </Container>
+
+      {/* Scroll cue */}
+      {!reduce ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.3, duration: 1 }}
+          className="absolute bottom-7 left-1/2 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ChevronDown className="h-5 w-5 text-white/55" />
+          </motion.div>
+        </motion.div>
+      ) : null}
     </section>
   );
 }

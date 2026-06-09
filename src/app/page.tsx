@@ -3,11 +3,13 @@ import Hero from "@/components/home/Hero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
 import { PropertyGrid } from "@/components/property/PropertyGrid";
 import { PortfolioCategories } from "@/components/sections/PortfolioCategories";
 import { CoreValues } from "@/components/sections/CoreValues";
 import { Mission } from "@/components/sections/Mission";
+import { StatementBand } from "@/components/sections/StatementBand";
 import { PartnerCTA } from "@/components/sections/PartnerCTA";
 import { getFeaturedProperties } from "@/data/properties";
 import { about, expertise, clientele } from "@/content/content";
@@ -19,48 +21,47 @@ export default async function HomePage() {
     <>
       <Hero />
 
-      {/* About / intro */}
-      <section className="border-b border-line">
-        <Container className="py-24 sm:py-32">
-          <div className="grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-6">
-              <SectionHeading eyebrow={about.eyebrow} title={about.lead} />
-            </div>
-            <div className="lg:col-span-5 lg:col-start-8">
-              <Reveal delay={0.1}>
-                <p className="text-pretty text-lg leading-relaxed text-ink-soft">
-                  {about.body}
-                </p>
-                <ul className="mt-8 flex flex-wrap gap-2.5">
-                  {clientele.map((c) => (
-                    <li
-                      key={c}
-                      className="rounded-full border border-line px-4 py-1.5 text-xs uppercase tracking-caps text-muted"
-                    >
-                      {c}
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
-            </div>
-          </div>
+      {/* About intro, anchored by the skyline rising from the base */}
+      <section className="relative overflow-hidden border-b border-line">
+        <Container className="relative z-10 pb-44 pt-20 text-center sm:pb-56 sm:pt-28">
+          <Reveal className="mx-auto flex max-w-3xl flex-col items-center gap-6">
+            <Eyebrow>{about.eyebrow}</Eyebrow>
+            <h2 className="font-display text-balance text-2xl uppercase leading-[1.15] tracking-caps text-ink sm:text-3xl lg:text-[2.5rem]">
+              {about.lead}
+            </h2>
+            <p className="max-w-2xl text-pretty text-lg leading-relaxed text-muted">
+              {about.body}
+            </p>
+            <ul className="mt-2 flex flex-wrap justify-center gap-2.5">
+              {clientele.map((c) => (
+                <li
+                  key={c}
+                  className="rounded-full border border-line bg-canvas/70 px-4 py-1.5 text-xs uppercase tracking-caps text-muted"
+                >
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </Container>
-
-        {/* Skyline illustration band */}
-        <Reveal className="relative h-56 w-full sm:h-72 lg:h-80">
+        {/* Skyline: white dropped via multiply so buildings sit on the page */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[58%] sm:h-[64%]"
+        >
           <Image
             src="/brand/skyline.jpg"
-            alt="The Delhi skyline, illustrated"
+            alt=""
             fill
             sizes="100vw"
-            className="object-cover object-bottom"
+            className="object-cover object-bottom mix-blend-multiply"
           />
-        </Reveal>
+        </div>
       </section>
 
       {/* Expertise */}
       <section className="border-b border-line">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-20 sm:py-28">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal>
               <div className="relative aspect-[4/3] overflow-hidden rounded-[3px]">
@@ -105,7 +106,7 @@ export default async function HomePage() {
 
       {/* Portfolio */}
       <section className="border-b border-line bg-surface">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-20 sm:py-28">
           <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
               eyebrow="Our portfolio"
@@ -122,9 +123,16 @@ export default async function HomePage() {
         </Container>
       </section>
 
+      {/* Immersive statement */}
+      <StatementBand
+        image="/brand/interior.jpg"
+        eyebrow="The practice"
+        statement="We move quietly and think strategically, representing the rare and the remarkable."
+      />
+
       {/* Core values */}
       <section className="border-b border-line">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-20 sm:py-28">
           <SectionHeading
             eyebrow="Core values"
             title="What we stand on"
@@ -135,8 +143,12 @@ export default async function HomePage() {
       </section>
 
       {/* Mission */}
-      <section className="border-b border-line bg-surface">
-        <Container className="py-24 sm:py-32">
+      <section className="relative overflow-hidden border-b border-line bg-surface">
+        <div
+          aria-hidden
+          className="dot-grid pointer-events-none absolute right-6 top-10 hidden h-40 w-40 text-accent/25 lg:block"
+        />
+        <Container className="relative py-20 sm:py-28">
           <SectionHeading
             eyebrow="Our mission"
             title="How we work"
@@ -146,9 +158,9 @@ export default async function HomePage() {
         </Container>
       </section>
 
-      {/* Featured residences (empty state until listings are added) */}
+      {/* Selected homes (empty state until listings are added) */}
       <section className="border-b border-line">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-20 sm:py-28">
           <SectionHeading
             eyebrow="Residences"
             title="Selected homes"

@@ -25,6 +25,8 @@ export default function Navbar() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   const solid = scrolled || open;
+  // Home has a full-bleed dark hero; sit light over it until the user scrolls.
+  const overHero = pathname === "/" && !scrolled && !open;
 
   return (
     <header
@@ -43,9 +45,17 @@ export default function Navbar() {
             width={350}
             height={150}
             priority
-            className="h-7 w-auto"
+            className={cn(
+              "h-7 w-auto transition",
+              overHero && "brightness-0 invert",
+            )}
           />
-          <span className="font-display text-[15px] tracking-caps text-ink">
+          <span
+            className={cn(
+              "font-display text-[15px] tracking-caps transition-colors duration-300",
+              overHero ? "text-white" : "text-ink",
+            )}
+          >
             SURI REAL ESTATE
           </span>
         </Link>
@@ -60,7 +70,11 @@ export default function Navbar() {
                   href={l.href}
                   className={cn(
                     "group relative text-[13px] tracking-wide transition-colors duration-300",
-                    isActive(l.href) ? "text-ink" : "text-ink-soft hover:text-ink",
+                    overHero
+                      ? "text-white/85 hover:text-white"
+                      : isActive(l.href)
+                        ? "text-ink"
+                        : "text-ink-soft hover:text-ink",
                   )}
                 >
                   {l.label}
@@ -79,7 +93,10 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center text-ink md:hidden"
+          className={cn(
+            "inline-flex h-10 w-10 items-center justify-center transition-colors md:hidden",
+            overHero ? "text-white" : "text-ink",
+          )}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >

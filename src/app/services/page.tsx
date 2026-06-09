@@ -25,7 +25,7 @@ export default function ServicesPage() {
 
       {/* Areas of expertise */}
       <section className="border-b border-line">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-20 sm:py-28">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="order-2 lg:order-1">
               <SectionHeading
@@ -65,7 +65,7 @@ export default function ServicesPage() {
 
       {/* What we handle */}
       <section className="border-b border-line bg-surface">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-20 sm:py-28">
           <SectionHeading
             eyebrow="What we handle"
             title="A diverse portfolio"
@@ -77,7 +77,7 @@ export default function ServicesPage() {
 
       {/* How we work */}
       <section className="border-b border-line">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-20 sm:py-28">
           <SectionHeading
             eyebrow="Our mission"
             title="How we work"
