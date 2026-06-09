@@ -97,6 +97,29 @@
   background-size: 14px 14px;
 }
 
+/* Apple-style frosted "liquid glass" - light surfaces */
+@utility glass {
+  background: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 14px 40px -18px rgba(20, 17, 15, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Frosted glass for dark / over-image surfaces */
+@utility glass-dark {
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 20px 45px -18px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
 /* ── Lenis smooth scroll (recommended base styles) ───────────────────────── */
 html.lenis,
 html.lenis body {

@@ -100,3 +100,34 @@ export const partner = {
   sub: "Let's build a relationship.",
   body: "Premium real estate is more than just square footage. It is about the trust behind the deal. Experience the dedication of a team that is always on your side.",
 };
+
+// Where we operate (Properties page) - drawn from the profile.
+export const areas = [
+  "South Delhi",
+  "Lutyens' Delhi",
+  "Farmhouse Belts",
+  "High Street Retail",
+  "Corporate Offices",
+  "Hotels",
+  "Land Acquisitions",
+];
+
+// Full-service support (Services page) - reflecting the profile's promise.
+export const support = [
+  {
+    title: "Acquisition & Sourcing",
+    body: "Discreet access to residences that rarely reach the open market, shaped around your goals.",
+  },
+  {
+    title: "Documentation & Transition",
+    body: "Comprehensive support through paperwork, due diligence and a seamless handover.",
+  },
+  {
+    title: "Asset Management",
+    body: "Long-term stewardship of your home or portfolio, well beyond the signature.",
+  },
+  {
+    title: "Round-the-clock Access",
+    body: "A team available 24/7, whether you are local or an NRI in a distant time zone.",
+  },
+];

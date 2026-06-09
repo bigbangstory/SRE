@@ -33,7 +33,7 @@ export default function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-luxe",
         solid
-          ? "border-b border-line bg-canvas/80 backdrop-blur-xl"
+          ? "border-b border-line bg-canvas/70 backdrop-blur-xl backdrop-saturate-150"
           : "border-b border-transparent bg-transparent",
       )}
     >
@@ -113,7 +113,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden border-t border-line bg-canvas/95 backdrop-blur-xl md:hidden"
+            className="overflow-hidden border-t border-line bg-canvas/80 backdrop-blur-xl backdrop-saturate-150 md:hidden"
           >
             <ul className="flex flex-col px-6 py-4">
               {site.nav.map((l) => (

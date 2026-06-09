@@ -5,7 +5,6 @@ import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
 import { CoreValues } from "@/components/sections/CoreValues";
-import { Mission } from "@/components/sections/Mission";
 import { PartnerCTA } from "@/components/sections/PartnerCTA";
 import { about, clientele } from "@/content/content";
 import { site } from "@/lib/site";
@@ -25,15 +24,14 @@ export default function AboutPage() {
         <Container className="py-20 sm:py-28">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[3px]">
-                <Image
-                  src="/brand/handshake.jpg"
-                  alt="The Suri Real Estate team in conversation with clients"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
+              <Image
+                src="/brand/handshake.jpg"
+                alt="The Suri Real Estate team in conversation with clients"
+                width={1229}
+                height={820}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="h-auto w-full mix-blend-multiply"
+              />
             </Reveal>
             <div>
               <SectionHeading
@@ -58,7 +56,7 @@ export default function AboutPage() {
                     {clientele.map((c) => (
                       <li
                         key={c}
-                        className="rounded-full border border-line px-4 py-1.5 text-xs uppercase tracking-caps text-muted"
+                        className="glass rounded-full px-4 py-1.5 text-xs uppercase tracking-caps text-muted"
                       >
                         {c}
                       </li>
@@ -83,20 +81,8 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Mission */}
-      <section className="border-b border-line">
-        <Container className="py-20 sm:py-28">
-          <SectionHeading
-            eyebrow="Our mission"
-            title="How we work"
-            className="mb-14 max-w-2xl"
-          />
-          <Mission />
-        </Container>
-      </section>
-
       {/* People */}
-      <section className="border-b border-line bg-surface">
+      <section className="border-b border-line">
         <Container className="py-20 sm:py-28">
           <SectionHeading
             eyebrow="The people"
@@ -114,9 +100,9 @@ export default function AboutPage() {
                 <Reveal
                   key={c.name}
                   delay={i * 0.1}
-                  className="flex flex-col items-center gap-4 rounded-[3px] border border-line bg-canvas p-10 text-center"
+                  className="glass flex flex-col items-center gap-4 rounded-[6px] p-10 text-center"
                 >
-                  <span className="grid h-16 w-16 place-items-center rounded-full border border-line font-display text-lg tracking-caps text-accent">
+                  <span className="grid h-16 w-16 place-items-center rounded-full border border-line/80 font-display text-lg tracking-caps text-accent">
                     {initials}
                   </span>
                   <span className="font-serif text-2xl text-ink">{c.name}</span>
