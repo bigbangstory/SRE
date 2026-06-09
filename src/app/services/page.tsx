@@ -64,7 +64,7 @@ export default function ServicesPage() {
       <section className="relative overflow-hidden border-b border-line bg-surface">
         <div
           aria-hidden
-          className="dot-grid pointer-events-none absolute inset-0 text-accent/15"
+          className="dot-grid pointer-events-none absolute inset-0 text-accent/25"
         />
         <Container className="relative py-20 sm:py-28">
           <SectionHeading
