@@ -18,13 +18,15 @@ export function PortfolioCategories() {
             <div className="absolute inset-0 bg-gradient-to-t from-ink-canvas/85 via-ink-canvas/20 to-transparent" />
             {/* hover accent line */}
             <span className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-accent transition-transform duration-500 ease-luxe group-hover:scale-x-100" />
-            <div className="absolute inset-x-0 bottom-0 p-6">
-              <span className="font-display text-xs tracking-caps text-accent-soft">
-                {c.n}
-              </span>
-              <h3 className="mt-1 font-display text-lg uppercase tracking-caps text-white">
-                {c.title}
-              </h3>
+            <div className="absolute inset-x-5 bottom-5">
+              <div className="glass-dark inline-flex items-center gap-2.5 rounded-full px-4 py-2.5">
+                <span className="font-display text-xs tracking-caps text-accent-soft">
+                  {c.n}
+                </span>
+                <h3 className="font-display text-[13px] uppercase tracking-caps text-white">
+                  {c.title}
+                </h3>
+              </div>
             </div>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-muted">{c.body}</p>

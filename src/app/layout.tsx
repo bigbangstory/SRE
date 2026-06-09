@@ -4,6 +4,7 @@ import "./globals.css";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import LiquidGlassFilter from "@/components/layout/LiquidGlassFilter";
 import { site } from "@/lib/site";
 
 const hanken = Hanken_Grotesk({
@@ -71,6 +72,7 @@ export default function RootLayout({
       className={`${hanken.variable} ${cormorant.variable} ${cinzel.variable} antialiased`}
     >
       <body className="min-h-screen bg-canvas text-ink">
+        <LiquidGlassFilter />
         <SmoothScroll>
           <Navbar />
           <main>{children}</main>
