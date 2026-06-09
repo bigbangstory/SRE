@@ -28,9 +28,9 @@ export const site = {
 
   nav: [
     { label: "Home", href: "/" },
-    { label: "Properties", href: "/properties" },
-    { label: "Services", href: "/services" },
     { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Properties", href: "/properties" },
     { label: "Contact", href: "/contact" },
   ] satisfies NavLink[],
 } as const;
