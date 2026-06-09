@@ -27,8 +27,16 @@ const cinzel = Cinzel({
   display: "swap",
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "https://surirealestate.com");
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://surirealestate.com"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: `${site.name} · ${site.tagline}`,
     template: `%s · ${site.name}`,
