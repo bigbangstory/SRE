@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/*
+  ──────────────────────────────────────────────────────────────────────────
+  BRAND TOKENS  -  Suri Real Estate
+  Colours sampled directly from the company profile: brick red #A82E2E,
+  warm charcoal, off-white ground, grey body. Change here to re-theme.
+  ──────────────────────────────────────────────────────────────────────────
+*/
+:root {
+  --canvas: #fbfaf8; /* warm off-white ground */
+  --surface: #ffffff; /* cards / raised panels */
+  --ink: #211b19; /* primary text / headings (warm charcoal) */
+  --ink-soft: #4a423e; /* body copy */
+  --muted: #7a716b; /* captions / labels */
+  --line: #eae5e0; /* hairline borders */
+
+  --accent: #a82e2e; /* brand red */
+  --accent-strong: #8e2626; /* hover / pressed red */
+  --accent-soft: #c96a6a; /* red for dark backgrounds */
+
+  /* Warm charcoal band (footer / dark sections) */
+  --ink-canvas: #1a1513;
+  --ink-text: #f4efea;
+  --ink-muted: #a99e97;
+  --ink-line: rgba(244, 239, 234, 0.12);
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+
+  --color-ink-canvas: var(--ink-canvas);
+  --color-ink-text: var(--ink-text);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-line: var(--ink-line);
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-cormorant);
+  --font-display: var(--font-cinzel);
+
+  /* Signature easing used across reveals & transitions */
+  --ease-luxe: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Editorial headings default to the serif; Cinzel is opted-in per element. */
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif), ui-serif, Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Tracked uppercase labels (eyebrows, section titles) */
+@utility tracking-luxe {
+  letter-spacing: 0.22em;
+}
+@utility tracking-caps {
+  letter-spacing: 0.12em;
+}
+/* Brand dotted-grid motif from the profile deck */
+@utility dot-grid {
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+/* ── Lenis smooth scroll (recommended base styles) ───────────────────────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
