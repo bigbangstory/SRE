@@ -21,9 +21,9 @@ export default async function HomePage() {
     <>
       <Hero />
 
-      {/* About intro, anchored by the skyline rising from the base */}
-      <section className="relative overflow-hidden border-b border-line">
-        <Container className="relative z-10 pb-44 pt-20 text-center sm:pb-56 sm:pt-28">
+      {/* About intro, with the skyline as a clean banner beneath the copy */}
+      <section className="overflow-hidden border-b border-line">
+        <Container className="pb-10 pt-20 text-center sm:pb-12 sm:pt-28">
           <Reveal className="mx-auto flex max-w-3xl flex-col items-center gap-6">
             <Eyebrow>{about.eyebrow}</Eyebrow>
             <h2 className="font-display text-balance text-2xl uppercase leading-[1.15] tracking-caps text-ink sm:text-3xl lg:text-[2.5rem]">
@@ -44,19 +44,17 @@ export default async function HomePage() {
             </ul>
           </Reveal>
         </Container>
-        {/* Skyline: white dropped via multiply so buildings sit on the page */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[58%] sm:h-[64%]"
-        >
+        {/* Skyline banner: white dropped via multiply so it sits on the page */}
+        <Reveal className="px-6">
           <Image
-            src="/brand/skyline.jpg"
-            alt=""
-            fill
-            sizes="100vw"
-            className="object-cover object-bottom mix-blend-multiply"
+            src="/brand/skyline-banner.jpg"
+            alt="The Delhi skyline, illustrated"
+            width={1536}
+            height={740}
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            className="mx-auto block h-auto w-full max-w-5xl mix-blend-multiply"
           />
-        </div>
+        </Reveal>
       </section>
 
       {/* Expertise */}
