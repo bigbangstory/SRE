@@ -34,6 +34,7 @@ export function Button({
   onDark = false,
   arrow = false,
   className,
+  refractImage,
 }: {
   href: string;
   children: ReactNode;
@@ -41,12 +42,24 @@ export function Button({
   onDark?: boolean;
   arrow?: boolean;
   className?: string;
+  /**
+   * When set, renders a refracted copy of this image behind the glass (for a
+   * glass button sitting over a known, static background). Works in Safari.
+   */
+  refractImage?: string;
 }) {
   return (
     <Link
       href={href}
       className={cn(base, variants[variant][onDark ? "dark" : "light"], className)}
     >
+      {refractImage ? (
+        <span
+          aria-hidden
+          className="glass-refract-layer"
+          style={{ backgroundImage: `url(${refractImage})` }}
+        />
+      ) : null}
       {children}
       {arrow ? (
         <ArrowRight className="h-4 w-4 transition-transform duration-500 ease-luxe group-hover:translate-x-1" />
