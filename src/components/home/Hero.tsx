@@ -98,12 +98,7 @@ export default function Hero() {
             <Button href="/properties" onDark arrow>
               View portfolio
             </Button>
-            <Button
-              href="/contact"
-              variant="glass"
-              onDark
-              refractImage="/brand/hero-terrace.jpg"
-            >
+            <Button href="/contact" variant="glass" onDark>
               Partner with us
             </Button>
           </motion.div>

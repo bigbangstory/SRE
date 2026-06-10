@@ -97,34 +97,28 @@
   background-size: 14px 14px;
 }
 
-/* Apple-style "Liquid Glass" - clear, with a bright rim and a diagonal
-   specular sheen. Reads best over imagery/colour; subtle over flat light. */
+/* Frosted glass - clean and static (no animated shine). Safari-safe: no url()
+   filter inside backdrop-filter, so it renders the same in every browser. */
 @layer components {
   .glass,
   .glass-dark {
     position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    /* Same recipe in every engine - Safari-safe, no url() inside backdrop-filter */
-    -webkit-backdrop-filter: blur(12px) saturate(180%) brightness(1.06) contrast(1.02);
-    backdrop-filter: blur(12px) saturate(180%) brightness(1.06) contrast(1.02);
+    -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.04);
+    backdrop-filter: blur(16px) saturate(180%) brightness(1.04);
   }
   .glass {
-    --caustic-o: 0.05;
-    background: rgba(255, 255, 255, 0.26);
-    border: 1px solid rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     box-shadow:
-      inset 0 1px 2px rgba(255, 255, 255, 1),
-      0 26px 52px -18px rgba(20, 17, 15, 0.32),
-      0 6px 16px -8px rgba(20, 17, 15, 0.14);
+      inset 0 1px 1px rgba(255, 255, 255, 0.9),
+      0 18px 40px -16px rgba(20, 17, 15, 0.22);
   }
   .glass-dark {
-    --caustic-o: 0.12;
     background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.34);
     box-shadow:
-      inset 0 1px 2px rgba(255, 255, 255, 0.7),
-      0 24px 50px -16px rgba(0, 0, 0, 0.55);
+      inset 0 1px 1px rgba(255, 255, 255, 0.5),
+      0 18px 40px -14px rgba(0, 0, 0, 0.5);
   }
   /* Legibility insurance where backdrop-filter is unsupported */
   @supports not (
@@ -137,77 +131,11 @@
       background: rgba(26, 21, 19, 0.55);
     }
   }
-  /* drifting specular highlight - the primary "alive" cue (cross-browser) */
-  .glass::before,
-  .glass-dark::before {
-    content: "";
-    position: absolute;
-    inset: -60%;
-    z-index: -1;
-    background: linear-gradient(
-      115deg,
-      transparent 38%,
-      rgba(255, 255, 255, 0.34) 49%,
-      rgba(255, 255, 255, 0.06) 53%,
-      transparent 60%
-    );
-    animation: glass-drift 9s ease-in-out infinite;
-    pointer-events: none;
-  }
-  /* baked-noise caustics - light shifting through the glass (Safari-safe) */
-  .glass::after,
-  .glass-dark::after {
-    content: "";
-    position: absolute;
-    inset: -60%;
-    z-index: -1;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.045' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23c)'/%3E%3C/svg%3E");
-    background-size: 200px 200px;
-    mix-blend-mode: soft-light;
-    opacity: var(--caustic-o, 0.07);
-    animation: glass-caustics 20s ease-in-out infinite;
-    pointer-events: none;
-  }
-  /* Liquid-glass top bar (nav) */
+  /* Frosted top bar (nav) */
   .glass-bar {
     -webkit-backdrop-filter: blur(16px) saturate(180%);
     backdrop-filter: blur(16px) saturate(180%);
-    background: rgba(251, 250, 248, 0.5);
-  }
-  /* Element-level refraction layer (hero CTA only) - works in Safari too,
-     because the url()-filter restriction is on backdrop-filter, not filter. */
-  .glass-refract-layer {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    filter: url(#glass-refract) blur(1px);
-    opacity: 0.85;
-    pointer-events: none;
-  }
-}
-
-@keyframes glass-drift {
-  0%,
-  100% {
-    transform: translate3d(-12%, -8%, 0);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translate3d(12%, 8%, 0);
-    opacity: 0.95;
-  }
-}
-
-@keyframes glass-caustics {
-  0%,
-  100% {
-    transform: translate3d(-4%, -3%, 0) scale(1.06);
-  }
-  50% {
-    transform: translate3d(4%, 3%, 0) scale(1.14);
+    background: rgba(251, 250, 248, 0.65);
   }
 }
 
